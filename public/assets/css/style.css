@@ -1,0 +1,20 @@
+html, body{
+    height: 100%;
+}
+.first__txt{
+    background-color: #212529;
+    color: #ffffff;
+    border-bottom-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+}
+.product__img{
+    height: 100%;
+    width: 100%;
+}
+/* register and login page */
+.miniinput{
+    width: 17.3vw;
+}
+.fullinput{
+    width: 35vw;
+}
