@@ -7,9 +7,9 @@ routes.get('/', getpage.gethome);
 routes.get('/register', getpage.getregister);
 routes.get('/login', getpage.getlogin);
 routes.get('/homepage', getpage.gethomepage);
-//routes.get('/homepage/profile', getpage.getprofile);
-//routes.get('/homepage/bill', getpage.getbill);
-//routes.get('/homepage/salesList', getpage.getsalesList);
-//routes.get('/homepage/logout', getpage.getlogout);
+routes.get('/homepage/profile', getpage.getprofile);
+routes.get('/homepage/salesList/bill', getpage.getbill);
+routes.get('/homepage/salesList', getpage.getsalesList);
+routes.get('/homepage/logout', getpage.getlogout);
 
 module.exports = routes;
