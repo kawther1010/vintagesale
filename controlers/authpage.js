@@ -54,7 +54,6 @@ const postregister = async(req,res) => {
         mobile: req.body.mobile,
         password: hashedPassword,
         confirmPassword: hashedPassword,
-        chart: req.body.chart,
     });
     
     const token = jwt.sign({ firstName: req.body.firstName, lastName: req.body.lastName, birthDate: req.body.birthDate, email: req.body.email, mobile: req.body.mobile }, process.env.TOKEN_SECRET);

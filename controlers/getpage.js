@@ -1,5 +1,6 @@
 const express = require('express');
 const Buyer = require('../models/model.buyer');
+const Product= require('../models/model.product')
 //const Sale = require('../models/model.sale');
 
 const gethome = (req, res) => {
@@ -27,18 +28,47 @@ const getregister = (req, res) => {
 }
 
 const gethomepage = (req, res) => {
-    try{
-        res.status(200).render('homepage');
-    } catch(err){
-        res.status(404).send('Error 404: Page not found.');
-    }
+    Product.find({ }, (err, docs) => {
+        try{
+            return res.status(200).render('homepage', {
+                productList: docs,
+                name: Product.name,
+                bides: Product.bides,
+            });
+        } catch(err) {
+            return res.status(404).send('Error 404: Page not found');
+        }
+    });
 }
 
-//working on displaying buyer infos on his profile
+const getproductdetails= (req, res) => {
+    //console.log(req);
+    //return res.status(404).send('Error 404: Page not found');
+    /*
+    Product.findById({_id: ObjectId(req.params.id)}, (err, docs) => {
+        try{
+            return res.status(200).render('details', {
+                email: docs.email,
+                name: docs.name,
+                quantity: docs.quantity,
+                description: docs.description,
+                sales: docs.sales,
+                stars: docs.stars,
+            })
+
+        } catch(err){
+            return res.status(404).send('Error 404: Page not found');
+        }
+    });
+    */
+}
+
+//working on displaying profile picture on client profile's
 const getprofile = (req, res) => {
     Buyer.findOne({email: req.cookies.email}, (err, docs) => {
         try{
             return res.status(200).render('profile', {
+                //profile picture
                 firstName: docs.firstName,
                 lastName: docs.lastName
             });
@@ -48,6 +78,34 @@ const getprofile = (req, res) => {
     });
 }
 
+const geteditProfile = (req, res) => {
+    Buyer.findOne({email: req.cookies.email}, (err, docs) => {
+        try{
+            return res.status(200).render('editProfile', {
+                //profile picture
+                firstName: docs.firstName,
+                lastName: docs.lastName,
+                birthDate: docs.birthDate,
+                email: docs.email,
+                mobile: docs.mobile,
+                password: docs.password
+            });
+        } catch(err) {
+            res.status(404).send('Error 404: Page not found');
+        }
+    });
+}
+
+const getsellPage = (req, res) => {
+    try{
+        res.status(200).render('sellPage');
+    } catch(err){
+        res.status(404).send('Error 404: Page not found.');
+    }
+}
+
+
+
 const getsalesList = (req, res) => {
     try{
         res.status(200).render('salesList');
@@ -55,7 +113,6 @@ const getsalesList = (req, res) => {
         res.status(404).send('Error 404: Page not found.');
     }
 }
-
 /*
 const getsalesList = (req, res) => {
     Sale.find({email: req.cookies.email}, (err, docs) => {
@@ -98,6 +155,8 @@ const getbill = (req, res) => {
     }
 }
 
+
+
 const getlogout = (req, res) => {
     try{
         return res.cookie("token", null, {maxAge: 1}).status(200).redirect('/');
@@ -111,9 +170,16 @@ module.exports ={
     gethome,
     getlogin,
     getregister,
+
     gethomepage,
+    getproductdetails,
+
     getprofile,
+    geteditProfile,
+    getsellPage,
+
     getsalesList,
     getbill,
+    
     getlogout,
 }

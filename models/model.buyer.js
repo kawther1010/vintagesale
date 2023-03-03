@@ -37,14 +37,10 @@ var buyerschema = new mongoose.Schema({
         max: 1024,
         min: 6,
     },
-    chart: {
+    history: {
         type: String,
         required: false,
         default:"",
-    },
-    role: {
-        type: String,
-        default: "buyer",
     }
 }, {timestamps: true});
 
