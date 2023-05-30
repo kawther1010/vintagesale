@@ -1,5 +1,5 @@
 {
-  "name": "vintagesalev2.0",
+  "name": "vintagesale",
   "version": "1.0.0",
   "description": "## *npm* initialization",
   "main": "app.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/spiritcruusher/vintagesaleV2.0.git"
+    "url": "git+https://github.com/spiritcruusher/vintagesale.git"
   },
   "author": "kawther1010",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/spiritcruusher/vintagesaleV2.0/issues"
+    "url": "https://github.com/spiritcruusher/vintagesale/issues"
   },
-  "homepage": "https://github.com/spiritcruusher/vintagesaleV2.0#readme",
+  "homepage": "https://github.com/spiritcruusher/vintagesale#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
